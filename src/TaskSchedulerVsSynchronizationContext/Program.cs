@@ -1,6 +1,6 @@
 ﻿using TaskSchedulerVsSynchronizationContext;
 
-SynchronizationContext.SetSynchronizationContext(new SimpleSynchronizationContext());
+SynchronizationContext.SetSynchronizationContext(new SimpleThreadSynchronizationContext());
 
 void Work(object? _)
 {
@@ -10,8 +10,8 @@ void Work(object? _)
 
 async Task WorkAsync(object? _)
 {
-    //await Task.Delay(1000);
-    await Task.Delay(1000).ConfigureAwait(false);
+    await Task.Delay(1000);
+    //await Task.Delay(1000).ConfigureAwait(false);
     WriteLine($"Method WorkAsync is completed in {Thread.CurrentThread.ManagedThreadId}");
 }
 
@@ -23,6 +23,6 @@ Task task = new Task(Work!, null);
 //task.Start(TaskScheduler.FromCurrentSynchronizationContext());
 //task.Start(TaskScheduler.Current);
 //await WorkAsync(null);
-await WorkAsync(null).ConfigureAwait(false);
+//await WorkAsync(null).ConfigureAwait(false);
 
 ReadKey();
