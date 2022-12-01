@@ -17,13 +17,26 @@ async Task WorkAsync(object? _)
 
 WriteLine($"Method Main is started in {Thread.CurrentThread.ManagedThreadId}");
 
-MinThreadTaskScheduler scheduler = new MinThreadTaskScheduler();
+TaskScheduler? scheduler = null;
+TaskScheduler GetScheduler()
+{
+    scheduler ??= new MinThreadTaskScheduler();
+    return scheduler;
+}
 
 Task task = new Task(Work!, null);
-task.Start();
-//task.Start(scheduler);
+//task.Start();
+task.Start(GetScheduler());
 //task.Start(TaskScheduler.FromCurrentSynchronizationContext());
 //task.Start(TaskScheduler.Current);
+//task = Task.Factory.StartNew(() =>
+//{
+//    WriteLine($"Task task is started in {Thread.CurrentThread.ManagedThreadId}");
+//    Task.Run(() => WriteLine($"The nested task is started in {Thread.CurrentThread.ManagedThreadId}"));
+//    Task.Factory.StartNew(() => WriteLine($"Child task is started in {Thread.CurrentThread.ManagedThreadId}"),
+//        TaskCreationOptions.AttachedToParent);
+//}, CancellationToken.None, TaskCreationOptions.None, GetScheduler()); // HideScheduler
+//task.Wait();
 //await WorkAsync(null);
 //await WorkAsync(null).ConfigureAwait(false);
 
