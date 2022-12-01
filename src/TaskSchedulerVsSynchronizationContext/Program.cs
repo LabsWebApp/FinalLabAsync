@@ -24,14 +24,6 @@ task.Start();
 //task.Start(scheduler);
 //task.Start(TaskScheduler.FromCurrentSynchronizationContext());
 //task.Start(TaskScheduler.Current);
-//task = Task.Factory.StartNew(() =>
-//{
-//    WriteLine($"Task task is started in {Thread.CurrentThread.ManagedThreadId}");
-//    Task.Run(() => WriteLine($"The nested task is started in {Thread.CurrentThread.ManagedThreadId}"));
-//    Task.Factory.StartNew(() => WriteLine($"Child task is started in {Thread.CurrentThread.ManagedThreadId}"),
-//        TaskCreationOptions.AttachedToParent);
-//}, CancellationToken.None, TaskCreationOptions.None, scheduler); // HideScheduler
-//task.Wait();
 //await WorkAsync(null);
 //await WorkAsync(null).ConfigureAwait(false);
 
