@@ -8,9 +8,9 @@ internal class SimpleThreadSynchronizationContext : SynchronizationContext
         new Thread(() => d.Invoke(state)).Start();
     }
 
-    public override void Send(SendOrPostCallback d, object? state)
-    {
-        WriteLine($"Send from SimpleThreadSynchronizationContext in {Thread.CurrentThread.ManagedThreadId}");
-        d.Invoke(state);
-    }
+    //public override void Send(SendOrPostCallback d, object? state)
+    //{
+    //    WriteLine($"Send from SimpleThreadSynchronizationContext in {Thread.CurrentThread.ManagedThreadId}");
+    //    d.Invoke(state);
+    //}
 }
