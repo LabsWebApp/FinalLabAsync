@@ -7,7 +7,7 @@ namespace TaskSchedulerVsSynchronizationContext
     internal class Program
     {
         // static Singleton
-        //static Program() => SynchronizationContext.SetSynchronizationContext(new SimpleThreadPoolSynchronizationContext());
+        static Program() => SynchronizationContext.SetSynchronizationContext(new SimpleThreadPoolSynchronizationContext());
         
         private static void Work(object? _)
         {
@@ -25,14 +25,9 @@ namespace TaskSchedulerVsSynchronizationContext
 
         #region Singleton
         private static MinThreadTaskScheduler? _scheduler;
-        private static MinThreadTaskScheduler GetScheduler
-        {
-            get
-            {
-                _scheduler ??= new();
-                return _scheduler;
-            }
-        }
+        private static MinThreadTaskScheduler GetScheduler => 
+            _scheduler ??= new MinThreadTaskScheduler();
+
         #endregion
 
         static async Task Main()

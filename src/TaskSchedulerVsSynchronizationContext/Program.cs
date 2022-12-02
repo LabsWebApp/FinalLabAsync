@@ -20,17 +20,14 @@ WriteLine($"Method Main is started in {Thread.CurrentThread.ManagedThreadId}");
 
 #region Singleton
 TaskScheduler? scheduler = null;
-TaskScheduler GetScheduler()
-{
+TaskScheduler GetScheduler() =>
     scheduler ??= new MinThreadTaskScheduler();
-    return scheduler;
-}
 #endregion
 
 Task task = new Task(Work!, null);
 //task.Start();
 //task.Wait();
-//task.Start(GetScheduler());
+task.Start(GetScheduler());
 //task.Start(TaskScheduler.FromCurrentSynchronizationContext());
 //task.Start(TaskScheduler.Current);
 //task = Task.Factory.StartNew(() =>

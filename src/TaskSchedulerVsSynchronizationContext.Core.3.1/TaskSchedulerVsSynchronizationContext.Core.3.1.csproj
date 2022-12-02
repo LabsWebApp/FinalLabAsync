@@ -5,7 +5,6 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>TaskSchedulerVsSynchronizationContext</RootNamespace>
 	  <Nullable>enable</Nullable>
-	  <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
 </Project>
