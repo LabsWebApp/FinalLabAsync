@@ -35,11 +35,11 @@ Task task = new Task(Work!, null);
 //task = Task.Factory.StartNew(() =>
 //{
 //    WriteLine($"Current TaskScheduler - {TaskScheduler.Current.GetType().FullName}");
-//    WriteLine($"Task \"task\" (task №{task.Id}) is started in {Thread.CurrentThread.ManagedThreadId}");
 //    Task.Run(() => WriteLine($"\tThe nested-task  (task №{Task.CurrentId}) is completed in {Thread.CurrentThread.ManagedThreadId}"));
 //    Task.Factory.StartNew(() => WriteLine($"\tThe child-task (task №{Task.CurrentId}) is completed in {Thread.CurrentThread.ManagedThreadId}"),
 //        TaskCreationOptions.AttachedToParent);
-//}, CancellationToken.None, TaskCreationOptions.None, GetScheduler()); // HideScheduler
+//    WriteLine($"Task \"task\" (task №{Task.CurrentId}) is completed in {Thread.CurrentThread.ManagedThreadId}");
+//}, CancellationToken.None, TaskCreationOptions.None, GetScheduler); // HideScheduler
 //task.Wait();
 await WorkAsync(null);
 //await WorkAsync(null).ConfigureAwait(false);
