@@ -41,6 +41,7 @@ namespace TaskSchedulerVsSynchronizationContext
 
             Task task = new Task(Work!, null);
             //task.Start();
+            //task.Wait();
             //task.Start(GetScheduler);
             //task.Start(TaskScheduler.FromCurrentSynchronizationContext());
             //task.Start(TaskScheduler.Current);
@@ -52,7 +53,7 @@ namespace TaskSchedulerVsSynchronizationContext
             //        TaskCreationOptions.AttachedToParent);
             //    WriteLine($"Task \"task\" (task №{Task.CurrentId}) is completed in {Thread.CurrentThread.ManagedThreadId}");
             //}, CancellationToken.None, TaskCreationOptions.None, GetScheduler); // HideScheduler
-            task.Wait();
+            //task.Wait();
             //await WorkAsync(null);
             //await WorkAsync(null).ConfigureAwait(false);
 
