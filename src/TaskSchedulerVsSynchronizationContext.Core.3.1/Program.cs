@@ -17,9 +17,10 @@ namespace TaskSchedulerVsSynchronizationContext
 
         private static async Task WorkAsync(object? _)
         {
-            await Task.Delay(1000);
-            //await Task.Delay(1000).ConfigureAwait(false);
-            WriteLine($"Method WorkAsync (task №{Task.CurrentId}) is completed in {Thread.CurrentThread.ManagedThreadId}");
+            Task task = Task.Delay(1000);
+            await task;
+            //await task.ConfigureAwait(false);
+            WriteLine($"Method WorkAsync (task №{task.Id}) is completed in {Thread.CurrentThread.ManagedThreadId}");
         }
 
         #region Singleton
@@ -33,6 +34,7 @@ namespace TaskSchedulerVsSynchronizationContext
             }
         }
         #endregion
+
         static async Task Main()
         {
             WriteLine($"Method Main is started in {Thread.CurrentThread.ManagedThreadId}");
