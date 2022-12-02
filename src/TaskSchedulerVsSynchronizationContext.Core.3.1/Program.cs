@@ -44,14 +44,14 @@ namespace TaskSchedulerVsSynchronizationContext
             //task.Start(GetScheduler);
             //task.Start(TaskScheduler.FromCurrentSynchronizationContext());
             //task.Start(TaskScheduler.Current);
-            task = Task.Factory.StartNew(() =>
-            {
-                WriteLine($"Current TaskScheduler - {TaskScheduler.Current.GetType().FullName}");
-                Task.Run(() => WriteLine($"\tThe nested-task  (task №{Task.CurrentId}) is completed in {Thread.CurrentThread.ManagedThreadId}"));
-                Task.Factory.StartNew(() => WriteLine($"\tThe child-task (task №{Task.CurrentId}) is completed in {Thread.CurrentThread.ManagedThreadId}"),
-                    TaskCreationOptions.AttachedToParent);
-                WriteLine($"Task \"task\" (task №{Task.CurrentId}) is completed in {Thread.CurrentThread.ManagedThreadId}");
-            }, CancellationToken.None, TaskCreationOptions.None, GetScheduler); // HideScheduler
+            //task = Task.Factory.StartNew(() =>
+            //{
+            //    WriteLine($"Current TaskScheduler - {TaskScheduler.Current.GetType().FullName}");
+            //    Task.Run(() => WriteLine($"\tThe nested-task  (task №{Task.CurrentId}) is completed in {Thread.CurrentThread.ManagedThreadId}"));
+            //    Task.Factory.StartNew(() => WriteLine($"\tThe child-task (task №{Task.CurrentId}) is completed in {Thread.CurrentThread.ManagedThreadId}"),
+            //        TaskCreationOptions.AttachedToParent);
+            //    WriteLine($"Task \"task\" (task №{Task.CurrentId}) is completed in {Thread.CurrentThread.ManagedThreadId}");
+            //}, CancellationToken.None, TaskCreationOptions.None, GetScheduler); // HideScheduler
             task.Wait();
             //await WorkAsync(null);
             //await WorkAsync(null).ConfigureAwait(false);

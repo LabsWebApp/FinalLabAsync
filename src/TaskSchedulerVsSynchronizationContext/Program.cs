@@ -41,7 +41,7 @@ Task task = new Task(Work!, null);
 //    WriteLine($"Task \"task\" (task №{Task.CurrentId}) is completed in {Thread.CurrentThread.ManagedThreadId}");
 //}, CancellationToken.None, TaskCreationOptions.None, GetScheduler); // HideScheduler
 //task.Wait();
-await WorkAsync(null);
+//await WorkAsync(null);
 //await WorkAsync(null).ConfigureAwait(false);
 
 ReadKey();
